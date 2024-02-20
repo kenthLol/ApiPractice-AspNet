@@ -4,3 +4,8 @@ GET {{ApiPractice_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{ApiPractice_HostAddress}}/pizza/
+Accept: application/json
+
+###
