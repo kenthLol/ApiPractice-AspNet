@@ -30,7 +30,8 @@ public class PizzaService
     {
         var pizza = Get(id);
 
-        if (pizza is null) return;
+        if (pizza is null) 
+            return;
 
         Pizzas!.Remove(pizza);
     }

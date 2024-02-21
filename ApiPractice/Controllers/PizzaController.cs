@@ -78,9 +78,23 @@ public class PizzaController : ControllerBase
     /// <param name="pizza">Objeto pizza a actualizar.</param>
     /// <returns>Devuelve un 204 si la pizza se actualizó; de lo contrario, devuelve un 404</returns>
     [HttpPut]
-    public IActionResult Update([FromBody] int id, [FromBody] Pizza pizza)
+    public IActionResult Update(int id, [FromBody] Pizza pizza)
     {
         // This code will update the pizza and return a result
+        if(id != pizza.Id)
+        {
+            return BadRequest();
+        }
+
+        var existingPizza = PizzaService.Get(id);
+        if(existingPizza is null)
+        {
+            return NotFound();
+        }
+
+        PizzaService.Update(pizza);
+
+        return NoContent();
     }
 
     /// <summary>
@@ -94,5 +108,16 @@ public class PizzaController : ControllerBase
     public IActionResult Delete([FromRoute] int id)
     {
         // This code will delete the pizza and return a result
+
+        var pizza = PizzaService.Get(id);
+
+        if(pizza is null)
+        {
+            return NotFound();
+        }
+
+        PizzaService.Remove(id);
+
+        return NoContent();
     }
 }

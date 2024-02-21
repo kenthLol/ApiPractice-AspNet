@@ -9,3 +9,27 @@ GET {{ApiPractice_HostAddress}}/pizza/
 Accept: application/json
 
 ###
+POST {{ApiPractice_HostAddress}}/pizza/
+Content-Type: application/json
+
+{
+  "Name": "Hawaiian",
+  "IsGlutenFree": false
+}
+
+###
+
+PUT {{ApiPractice_HostAddress}}/pizza/
+Content-Type: application/json
+
+{
+  "Id": 1,
+  "Name": "Hawaiian",
+  "IsGlutenFree": true
+}
+
+###
+
+DELETE {{ApiPractice_HostAddress}}/pizza/
+
+###
